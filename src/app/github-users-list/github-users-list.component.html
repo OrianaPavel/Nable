@@ -1,0 +1,33 @@
+<p>Github user List</p>
+
+<div class="search-results-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+     (scrolled)="onScroll()" [scrollWindow]="false">
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Avatar</th>
+        <th>Type</th>
+        <th>Profile Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" (click)="goToUserDetail(user.username)" class="clickable-row">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td class="user-avatar">
+          <img [src]="user.avatar_url" alt="{{ user.username }}'s Avatar" class="avatar-img" />
+        </td>
+        <td>{{ user.type }}</td>
+        <td>
+            <a [href]="user.html_url" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
+                     alt="View Profile" class="avatar-img"/>
+              </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+</div>

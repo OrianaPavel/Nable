@@ -1,0 +1,40 @@
+.repo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+
+.repo-table thead {
+    background-color: #f0ad4e;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase; 
+}
+
+.repo-table th, .repo-table td {
+    text-align: center;
+    border: 1px solid #ddd; 
+    font-size: 16px; 
+}
+
+.repo-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.repo-table th:nth-child(1), .repo-table td:nth-child(1) {
+    width: 10%; 
+}
+
+.repo-table th:nth-child(2), .repo-table td:nth-child(2) {
+    width: 25%;
+}
+
+.repo-table th:nth-child(3), .repo-table td:nth-child(3) {
+    width: 15%; 
+}
+
+.repo-table th:nth-child(4), .repo-table td:nth-child(4) {
+    width: 50%; 
+}

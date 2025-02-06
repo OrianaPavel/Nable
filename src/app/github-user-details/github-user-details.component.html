@@ -1,0 +1,29 @@
+<p>Github Repo List</p>
+
+<ng-container *ngIf="currentPageData$ | async as data">
+  <table class="repo-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Repo Name</th>
+        <th>Repo Link</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repo of data">
+        <td>{{ repo.id }}</td>
+        <td>{{ repo.name }}</td>
+        <td>
+          <a [href]="repo.html_url" target="_blank">View Repo</a>
+        </td>
+        <td>{{ repo.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</ng-container>
+
+  <button (click)="prevPage()" [disabled]="(currentPage$ | async) === 1">Previous</button>
+  <button (click)="nextPage()" [disabled]="!(hasNextPage$ | async)">Next</button>
+  

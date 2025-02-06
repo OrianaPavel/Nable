@@ -1,0 +1,50 @@
+.search-results-container {
+    height: 50rem;
+    overflow-y: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+
+.user-table {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+
+.user-table thead {
+    background-color: #f0ad4e;
+    color: white;
+    font-size: 18px;
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+
+.avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.clickable-row {
+    cursor: pointer;
+  }
+  
+  .clickable-row:hover {
+    background-color: #d1c9c9;
+  }
+
+.loading {
+    margin: 20px auto;
+    font-size: 18px;
+    color: #f0ad4e;
+    text-align: center;
+}
