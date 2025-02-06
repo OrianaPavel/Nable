@@ -13,7 +13,6 @@ import { BehaviorSubject, map, switchMap } from 'rxjs';
 export class GithubUserDetailsComponent implements OnInit{
 
   username: string = '';
-  data: Repo[] = [];
   currentPage$ = new BehaviorSubject<number>(1);
   hasNextPage$ = new BehaviorSubject<boolean>(false);
 
@@ -22,7 +21,6 @@ export class GithubUserDetailsComponent implements OnInit{
       this.repoService.fetchRepos(currentPage, this.username)
     )
   );
-
 
   constructor(
     private route: ActivatedRoute,

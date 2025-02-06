@@ -26,10 +26,7 @@ export class UserService {
         }
 
         return this.http.get<HttpResponse<any>>(requestUrl, {
-            observe: 'response',
-            headers: new HttpHeaders({
-                'Authorization': 'Bearer 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'
-            })
+            observe: 'response'
         })
             .pipe(
                 tap((response) => {

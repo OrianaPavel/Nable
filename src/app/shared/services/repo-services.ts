@@ -17,10 +17,7 @@ export class RepoService {
     fetchRepos(page: number, username: string): Observable<Repo[]> {
         var requestUrl = `${Constants.BASE_URL}/${username}/repos?per_page=${Constants.ITEMS_PER_PAGE}&page=${page}`;
         return this.http.get<HttpResponse<any>>(requestUrl, { 
-            observe: 'response',
-            headers: new HttpHeaders({
-                'Authorization': 'Bearer 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'
-            })
+            observe: 'response'
          })
             .pipe(
                 tap((response) => {

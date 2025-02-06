@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/user';
 import { UserService } from '../shared/services/user-services';
 import { Router } from '@angular/router';
+import { map, Subject, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-github-users-list',
@@ -13,7 +14,20 @@ import { Router } from '@angular/router';
 export class GithubUsersListComponent implements OnInit {
   users: User[] = [];
   isLoading = false;
+  private loadUsers$ = new Subject<void>();
 
+  
+  currentPageData$ = this.loadUsers$.pipe(
+    switchMap(() => 
+      this.userService.fetchUsers().pipe(
+        map(data => {
+          this.isLoading = false;
+          return data;
+        })
+      )
+    )
+  );
+  
   constructor(
     private userService: UserService,
     private router: Router
@@ -21,27 +35,16 @@ export class GithubUsersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.nextUrl = null;
-    this.appendUsers();
-  }
-
-  appendUsers = ()=>{
-    if (this.isLoading) return; 
     this.isLoading = true;
-
-    this.userService.fetchUsers().subscribe({
-      next: (data) => {
-        this.users.push(...data); 
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error appending users:', err);
-        this.isLoading = false;
-      }
+    this.currentPageData$.subscribe(users => {
+      this.users.push(...users); 
     });
+    this.loadUsers$.next();
   }
 
   onScroll = ()=>{
-    this.appendUsers();
+    this.isLoading = true;
+    this.loadUsers$.next();
   }
 
   goToUserDetail(username: string) {

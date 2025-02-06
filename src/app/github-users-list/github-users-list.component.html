@@ -1,7 +1,7 @@
 <p>Github user List</p>
 
 <div class="search-results-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
-     (scrolled)="onScroll()" [scrollWindow]="false">
+  (scrolled)="onScroll()" [scrollWindow]="false">
   <table class="user-table">
     <thead>
       <tr>
@@ -21,10 +21,10 @@
         </td>
         <td>{{ user.type }}</td>
         <td>
-            <a [href]="user.html_url" target="_blank">
-                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
-                     alt="View Profile" class="avatar-img"/>
-              </a>
+          <a [href]="user.html_url" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="View Profile"
+              class="avatar-img" />
+          </a>
         </td>
       </tr>
     </tbody>
